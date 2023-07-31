@@ -2,8 +2,8 @@
   <div>
     <div class="d-flex flex-column">
       <div class="d-flex">
-        <v-img src="../assets/icon-list.svg"></v-img>
-        <p>{{ itemName }}</p>
+        <img src="../assets/icon-list.svg" >
+        <p class="small-text mx-5">{{ itemName }}</p>
       </div>
     </div>
   </div>

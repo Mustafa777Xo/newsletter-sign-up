@@ -6,6 +6,22 @@ $DarkSlateGrey: hsl(234, 29%, 20%);
 $CharcoalGrey: hsl(235, 18%, 26%);
 $Grey: hsl(231, 7%, 60%);
 $White: hsl(0, 0%, 100%);
+
+body {
+  background-color: $DarkSlateGrey;
+  font-family:"Roboto", sans-serif;
+}
+
+.container {
+  background-color: $White;
+  width: 50%;
+}
 .big-title {
-    
+  font-weight: bold;
+  font-size: 4rem;
+  color: $DarkSlateGrey;
+}
+.small-text {
+  font-size: 1rem;
+  color: $DarkSlateGrey;
 }

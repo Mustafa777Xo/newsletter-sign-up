@@ -1,12 +1,14 @@
 <template>
-  <div class="d-flex">
-    <div class="d-flex flex-column">
-      <TitleText />
-      <ListItem v-for="item in itemData" :item-name="item" />
-      <EmailInput />
-      <BaseButton title="Subscribe to monthly newsletter" />
+  <div class="container">
+    <div class="d-flex">
+      <div class="d-flex flex-column">
+        <TitleText />
+        <ListItem v-for="item in itemData" :item-name="item" />
+        <EmailInput />
+        <BaseButton title="Subscribe to monthly newsletter" />
+      </div>
+      <v-img src="../assets/illustration-sign-up-desktop.svg"></v-img>
     </div>
-    <v-img src="../assets/illustration-sign-up-desktop.svg"></v-img>
   </div>
 </template>
 
