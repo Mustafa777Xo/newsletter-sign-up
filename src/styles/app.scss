@@ -9,13 +9,9 @@ $White: hsl(0, 0%, 100%);
 
 body {
   background-color: $DarkSlateGrey;
-  font-family:"Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-.container {
-  background-color: $White;
-  width: 50%;
-}
 .big-title {
   font-weight: bold;
   font-size: 4rem;
