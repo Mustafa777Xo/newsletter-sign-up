@@ -10,12 +10,18 @@ $White: hsl(0, 0%, 100%);
 body {
   background-color: $DarkSlateGrey;
   font-family: "Roboto", sans-serif;
+  @media only screen and (max-width: 768px) {
+    background-color: white;
+  }
 }
 
 .big-title {
   font-weight: bold;
   font-size: 4rem;
   color: $DarkSlateGrey;
+  @media only screen and (max-width: 768px) {
+    font-size: 2rem;
+  }
 }
 .small-text {
   font-size: 1rem;

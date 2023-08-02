@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
-    <div :class="{'flex-column-reverse' :mdAndDown}"  class="d-flex" >
+  <!-- desktop -->
+  <div v-if="mdAndUp" class="container">
+    <div class="d-flex">
       <v-col cols="7" class="main-col">
         <TitleText />
         <ListItem v-for="item in itemData" :item-name="item" />
@@ -8,13 +9,29 @@
         <BaseButton title="Subscribe to monthly newsletter" />
       </v-col>
       <v-col cols="5">
-        <v-img
-          src="../assets/illustration-sign-up-desktop.svg"
-          v-if="mdAndUp"
-        ></v-img>
+        <v-img src="../assets/illustration-sign-up-desktop.svg"></v-img>
         <v-img src="../assets/illustration-sign-up-mobile.svg" v-if="mdAndDown">
         </v-img>
       </v-col>
+    </div>
+  </div>
+  <!-- mobile -->
+  <div v-if="mdAndDown" class="container">
+    <div class="d-flex flex-column">
+      <v-row>
+        <v-col>
+          <v-img
+            src="../assets/illustration-sign-up-mobile.svg"
+            class="mobile-img"
+          />
+          <v-container class="pa-5">
+            <TitleText />
+            <ListItem v-for="item in itemData" :item-name="item" />
+            <EmailInput class="py-5" />
+            <BaseButton title="Subscribe to monthly newsletter" />
+          </v-container>
+        </v-col>
+      </v-row>
     </div>
   </div>
 </template>
@@ -36,12 +53,21 @@ const itemData = [
 <style lang="scss" scoped>
 .main-col {
   padding: 4rem 5rem;
+  @media only screen and (max-width: 768px) {
+    padding: 2rem 1rem;
+  }
 }
+
 .container {
   background-color: white;
   width: 70%;
   margin: 10rem auto;
   padding: 0rem 1rem;
   border-radius: 1.5rem;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 }
 </style>
