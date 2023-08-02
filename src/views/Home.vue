@@ -6,12 +6,13 @@
         <TitleText />
         <ListItem v-for="item in itemData" :item-name="item" />
         <EmailInput class="py-5" />
-        <BaseButton title="Subscribe to monthly newsletter" />
+        <BaseButton
+          @click="overlay = !overlay"
+          title="Subscribe to monthly newsletter"
+        />
       </v-col>
       <v-col cols="5">
         <v-img src="../assets/illustration-sign-up-desktop.svg"></v-img>
-        <v-img src="../assets/illustration-sign-up-mobile.svg" v-if="mdAndDown">
-        </v-img>
       </v-col>
     </div>
   </div>
@@ -28,12 +29,33 @@
             <TitleText />
             <ListItem v-for="item in itemData" :item-name="item" />
             <EmailInput class="py-5" />
-            <BaseButton title="Subscribe to monthly newsletter" />
+            <BaseButton
+              @click="overlay = !overlay"
+              title="Subscribe to monthly newsletter"
+            />
           </v-container>
         </v-col>
       </v-row>
     </div>
   </div>
+
+  <v-overlay v-model="overlay">
+    <v-container class="overlay-container">
+      <v-row>
+        <v-col>
+          <v-img src="../assets/icon-success.svg" width="5rem"></v-img>
+          <p class="big-title mt-8 mb-8">Thank you for subscribing!</p>
+          <p class="small-text mb-5">
+            A confirmation email has been sent to
+            <span style="font-weight: bold"> ash@loremcompany.com </span>.
+            Please open it and click the button inside to confirm your
+            subscription.
+          </p>
+          <BaseButton title="Subscribe to monthly newsletter" />
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-overlay>
 </template>
 
 <script lang="ts" setup>
@@ -42,6 +64,7 @@ import ListItem from "@/components/ListItem.vue";
 import EmailInput from "@/components/EmailInput.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import { useDisplay } from "vuetify";
+import { ref } from "vue";
 
 const { mdAndDown, mdAndUp } = useDisplay();
 const itemData = [
@@ -49,6 +72,7 @@ const itemData = [
   "Measuring to ensure updates are sucess",
   "And much more!",
 ];
+const overlay = ref<boolean>(false);
 </script>
 <style lang="scss" scoped>
 .main-col {
@@ -69,5 +93,12 @@ const itemData = [
     margin: 0;
     padding: 0;
   }
+}
+.overlay-container {
+  background-color: white;
+  width: 40%;
+  margin: 10rem 30rem;
+  padding: 5rem;
+  border-radius: 1.5rem;
 }
 </style>
