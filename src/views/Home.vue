@@ -38,23 +38,23 @@
       </v-row>
     </div>
   </div>
-    <v-overlay v-model="isOverlayVisible">
-      <v-container class="overlay-container">
-        <v-row>
-          <v-col>
-            <v-img src="../assets/icon-success.svg" width="5rem"></v-img>
-            <p class="big-title mt-8 mb-8">Thank you for subscribing!</p>
-            <p class="small-text mb-5">
-              A confirmation email has been sent to
-              <span style="font-weight: bold"> ash@loremcompany.com </span>.
-              Please open it and click the button inside to confirm your
-              subscription.
-            </p>
-            <BaseButton title="Dismiss massage" @click="hideOverlay" />
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-overlay>
+  <v-overlay v-model="isOverlayVisible">
+    <v-container class="overlay-container">
+      <v-row>
+        <v-col>
+          <v-img src="../assets/icon-success.svg" width="5rem"></v-img>
+          <p class="big-title mt-8 mb-8">Thank you for subscribing!</p>
+          <p class="small-text mb-5" :class="{ 'mb-16': mdAndDown }">
+            A confirmation email has been sent to
+            <span style="font-weight: bold"> ash@loremcompany.com </span>.
+            Please open it and click the button inside to confirm your
+            subscription.
+          </p>
+          <BaseButton title="Dismiss massage" @click="hideOverlay" />
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-overlay>
 </template>
 
 <script lang="ts" setup>
@@ -106,5 +106,12 @@ const hideOverlay = () => {
   padding: 5rem;
   border-radius: 1.5rem;
   width: 40%;
+  @media only screen and (max-width: 768px) {
+    margin: 0;
+    padding: 20rem 3rem;
+    border-radius: 0;
+    width: 100%;
+    height: 100vh;
+  }
 }
 </style>
