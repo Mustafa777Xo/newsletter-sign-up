@@ -7,7 +7,7 @@
         <ListItem v-for="item in itemData" :item-name="item" />
         <EmailInput class="py-5" />
         <BaseButton
-          @click="overlay = !overlay"
+          @click="showOverlay"
           title="Subscribe to monthly newsletter"
         />
       </v-col>
@@ -30,7 +30,7 @@
             <ListItem v-for="item in itemData" :item-name="item" />
             <EmailInput class="py-5" />
             <BaseButton
-              @click="overlay = !overlay"
+              @click="showOverlay"
               title="Subscribe to monthly newsletter"
             />
           </v-container>
@@ -38,24 +38,23 @@
       </v-row>
     </div>
   </div>
-
-  <v-overlay v-model="overlay">
-    <v-container class="overlay-container">
-      <v-row>
-        <v-col>
-          <v-img src="../assets/icon-success.svg" width="5rem"></v-img>
-          <p class="big-title mt-8 mb-8">Thank you for subscribing!</p>
-          <p class="small-text mb-5">
-            A confirmation email has been sent to
-            <span style="font-weight: bold"> ash@loremcompany.com </span>.
-            Please open it and click the button inside to confirm your
-            subscription.
-          </p>
-          <BaseButton title="Subscribe to monthly newsletter" />
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-overlay>
+    <v-overlay v-model="isOverlayVisible">
+      <v-container class="overlay-container">
+        <v-row>
+          <v-col>
+            <v-img src="../assets/icon-success.svg" width="5rem"></v-img>
+            <p class="big-title mt-8 mb-8">Thank you for subscribing!</p>
+            <p class="small-text mb-5">
+              A confirmation email has been sent to
+              <span style="font-weight: bold"> ash@loremcompany.com </span>.
+              Please open it and click the button inside to confirm your
+              subscription.
+            </p>
+            <BaseButton title="Dismiss massage" @click="hideOverlay" />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-overlay>
 </template>
 
 <script lang="ts" setup>
@@ -72,7 +71,15 @@ const itemData = [
   "Measuring to ensure updates are sucess",
   "And much more!",
 ];
-const overlay = ref<boolean>(false);
+const isOverlayVisible = ref(false);
+
+const showOverlay = () => {
+  isOverlayVisible.value = true;
+};
+
+const hideOverlay = () => {
+  isOverlayVisible.value = false;
+};
 </script>
 <style lang="scss" scoped>
 .main-col {
@@ -81,7 +88,6 @@ const overlay = ref<boolean>(false);
     padding: 2rem 1rem;
   }
 }
-
 .container {
   background-color: white;
   width: 70%;
@@ -96,9 +102,9 @@ const overlay = ref<boolean>(false);
 }
 .overlay-container {
   background-color: white;
-  width: 40%;
   margin: 10rem 30rem;
   padding: 5rem;
   border-radius: 1.5rem;
+  width: 40%;
 }
 </style>
